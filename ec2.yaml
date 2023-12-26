@@ -1,5 +1,5 @@
 - name: Provisioning a new EC2 instance and security group
-  hosts: local
+  hosts: localhost
   connection: local
   gather_facts: False
   tags: provisioning
