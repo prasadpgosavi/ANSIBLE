@@ -1,7 +1,7 @@
 - name: Provisioning a new EC2 instance and security group
   hosts: localhost
   connection: local
-  gather_facts: true
+  gather_facts: false
   tags: provisioning
 
   pre_tasks:
@@ -14,13 +14,13 @@
         msg: "Using Python {{ ansible_python_version }}"
               
     - name: Install dependencies
-      shell: "/usr/bin/python3.10 -m pip install {{ item }}"
+      shell: "/usr/bin/python3 -m pip install {{ item }}"
       loop:
        - boto3
        - botocore
 
   vars:
-    ansible_python_interpreter: /usr/bin/python3.10
+    ansible_python_interpreter: /usr/bin/python3
     keypair: kubeadm
     instance_type: t2.micro
     image_id: ami-06aa3f7caf3a30282
